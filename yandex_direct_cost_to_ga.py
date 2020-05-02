@@ -190,7 +190,7 @@ GA_CSV_FILEPATH = "dataframe.csv"
 
 # Функция, которая очищает приписки от placement1, и заменяет значения none на Яндекс
 def clean_placement(row):
-    list = ["src_", "|dt"]  # сюда вводим грязь, от которой нужно очистить placement1
+    list = ["src_", "|dt"]
     row = str(row["placement1"])
     for i in list:
         row = row.replace(i, "")
@@ -201,7 +201,7 @@ def clean_placement(row):
 
 # Функция, которая очищает приписки от Device1
 def clean_device(row):
-    list = ["dt_", "|"]  # сюда вводим грязь, от которой нужно очистить placement1
+    list = ["dt_", "|"]
     row = str(row["Device1"])
     for i in list:
         row = row.replace(i, "")
@@ -255,10 +255,10 @@ def build_keyword(row):
 
 
 # Подготавливаем дата фрейм Директа
-data_from_direct["Clicks"] = data_from_direct["Clicks"].fillna(0)  # Заполняем пустые значения нулями
+data_from_direct["Clicks"] = data_from_direct["Clicks"].fillna(0)
 data_from_direct["key1"] = data_from_direct["Criterion"].str.split(" -", expand=True)[0].str.extract("(.*)")
 data_from_direct["key"] = data_from_direct.apply(clean_keyword, axis=1)
-data_from_direct["Cost"] = data_from_direct["Cost"].fillna(0)  # Заполняем пустые значения нулями
+data_from_direct["Cost"] = data_from_direct["Cost"].fillna(0)
 data_from_direct = data_from_direct.dropna()
 # Подготавливаем метрики Аналитикса
 data_from_direct["ga:date"] = data_from_direct["Date"].apply(lambda x: datetime.strptime(x, '%Y-%m-%d').strftime("%Y%m%d"))
