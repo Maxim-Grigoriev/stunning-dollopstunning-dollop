@@ -226,6 +226,7 @@ def build_campaign(row):
 
 #формируем utm_content
 def build_content(row):
+    phrase_id = str(row["CriterionId"])
     gbid = str(row["AdGroupId"])
     ad_id = str(row["AdId"])
     check_type = str(row["CriterionType"])
